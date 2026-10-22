@@ -60,7 +60,7 @@ jobs:
           composer-options: '--no-dev --optimize-autoloader'
 
       - name: Setup Node.js
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # 6.4.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # 7.1.0
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
