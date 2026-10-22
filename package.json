@@ -19,9 +19,9 @@
 		"npm": ">=10.0.0"
 	},
 	"dependencies": {
-		"@wordpress/api-fetch": "^7.56.0",
-		"@wordpress/dom-ready": "^4.56.0",
-		"@wordpress/i18n": "^6.29.0"
+		"@wordpress/api-fetch": "^7.57.0",
+		"@wordpress/dom-ready": "^4.57.0",
+		"@wordpress/i18n": "^6.30.0"
 	},
 	"devDependencies": {
 		"@wordpress/eslint-plugin": "^24.2.0",
