@@ -4,7 +4,7 @@
  *
  * @package rtcamp/rtcamps-ai-provider-for-openrouter
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 
 declare( strict_types=1 );
@@ -18,14 +18,14 @@ use WordPress\AiClient\Common\Exception\InvalidArgumentException;
 /**
  * Class for a single typed question asked of a decision model.
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 class DecisionQuestion {
 
 	/**
 	 * The minimum number of options or levels a choice or score question takes.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var int
 	 */
@@ -34,7 +34,7 @@ class DecisionQuestion {
 	/**
 	 * The maximum number of options or levels a choice or score question takes.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var int
 	 */
@@ -43,7 +43,7 @@ class DecisionQuestion {
 	/**
 	 * The question type.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 */
 	private DecisionTypeEnum $type;
@@ -51,7 +51,7 @@ class DecisionQuestion {
 	/**
 	 * The question text.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 */
 	private string $instructions;
@@ -59,7 +59,7 @@ class DecisionQuestion {
 	/**
 	 * The criteria in the shape the API expects, or null when none are sent.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var array<string, string>|list<string>|null
 	 */
@@ -68,7 +68,7 @@ class DecisionQuestion {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param \rtCamp\AIProviderForOpenRouter\Decisions\DecisionTypeEnum $type         The question type.
 	 * @param string                                                     $instructions The question text.
@@ -88,7 +88,7 @@ class DecisionQuestion {
 	/**
 	 * Creates a question that picks one option from a named set.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string                $instructions The question text.
 	 * @param array<string, string> $options      Map of option key to its description, 2 to 26 entries.
@@ -115,7 +115,7 @@ class DecisionQuestion {
 	/**
 	 * Creates a question that estimates the probability that a statement is true.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string      $instructions      The question text.
 	 * @param string|null $false_description Optional. What a false outcome means. Default null.
@@ -138,7 +138,7 @@ class DecisionQuestion {
 	/**
 	 * Creates a question that rates against ordered levels.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string       $instructions The question text.
 	 * @param list<string> $levels       Level descriptions from lowest to highest, 2 to 26 entries.
@@ -161,7 +161,7 @@ class DecisionQuestion {
 	 *
 	 * Supported by OpenRouter's Alpha Decisions endpoint (/api/alpha/decisions).
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string $instructions Description of the visual element or region to locate.
 	 * @return self The question.
@@ -174,7 +174,7 @@ class DecisionQuestion {
 	/**
 	 * Returns the question type.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return \rtCamp\AIProviderForOpenRouter\Decisions\DecisionTypeEnum The question type.
 	 */
@@ -185,7 +185,7 @@ class DecisionQuestion {
 	/**
 	 * Returns the question text.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return string The question text.
 	 */
@@ -196,7 +196,7 @@ class DecisionQuestion {
 	/**
 	 * Returns the criteria in the shape the API expects.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<string, string>|list<string>|null The option map for choice and noul
 	 *                                                 questions, the level list for score
@@ -209,7 +209,7 @@ class DecisionQuestion {
 	/**
 	 * Returns the question in the shape the OpenRouter Decision endpoints expect.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<string, mixed> The question data.
 	 */
@@ -229,7 +229,7 @@ class DecisionQuestion {
 	/**
 	 * Checks that a choice or score question has an accepted number of criteria.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string $type  The question type, for the error message.
 	 * @param int    $count The number of criteria given.
@@ -256,7 +256,7 @@ class DecisionQuestion {
 	/**
 	 * Reads a criterion description, rejecting anything but a non-empty string.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param mixed  $description The description.
 	 * @param string $label       What the description belongs to, for the error message.

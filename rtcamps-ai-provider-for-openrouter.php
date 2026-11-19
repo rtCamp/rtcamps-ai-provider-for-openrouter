@@ -2,10 +2,10 @@
 /**
  * Plugin Name:       rtCamp’s AI Provider for OpenRouter
  * Plugin URI:        https://github.com/rtcamp/rtcamps-ai-provider-for-openrouter
- * Description:       OpenRouter provider for the WordPress AI Client. Access hundreds of AI models (text and image generation) through a single API.
+ * Description:       OpenRouter provider for the WordPress AI Client. Access hundreds of AI models (text, image, speech generation, and decision making) through a single API.
  * Requires at least: 7.0
  * Requires PHP:      7.4
- * Version:           1.1.1
+ * Version:           1.2.0
  * Author:            rtCamp
  * Author URI:        https://rtcamp.com
  * License:           GPL-2.0-or-later
