@@ -240,17 +240,17 @@ class DecisionQuestion {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		throw new InvalidArgumentException(
-			sprintf(
-				'A %1$s question needs between %2$d and %3$d criteria, %4$d given.',
-				$type,
-				self::MIN_CRITERIA,
-				self::MAX_CRITERIA,
-				$count
+			esc_html(
+				sprintf(
+					'A %1$s question needs between %2$d and %3$d criteria, %4$d given.',
+					$type,
+					self::MIN_CRITERIA,
+					self::MAX_CRITERIA,
+					$count
+				)
 			)
 		);
-		// phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 	}
 
 	/**
@@ -265,8 +265,7 @@ class DecisionQuestion {
 	 */
 	private static function readDescription( $description, string $label ): string {
 		if ( ! is_string( $description ) || '' === trim( $description ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw new InvalidArgumentException( $label . ' must have a non-empty string description.' );
+			throw new InvalidArgumentException( esc_html( $label . ' must have a non-empty string description.' ) );
 		}
 
 		return $description;

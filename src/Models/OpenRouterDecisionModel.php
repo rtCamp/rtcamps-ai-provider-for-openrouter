@@ -168,11 +168,12 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 		if ( self::ENDPOINT_SYSTEM_ONE === $endpoint ) {
 			foreach ( $questions as $name => $question ) {
 				if ( $question instanceof DecisionQuestion && $question->getType()->isBox() ) {
-					// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 					throw new InvalidArgumentException(
-						sprintf(
-							'Decision question "%s" uses the "box" type, which requires "openrouter.decision_endpoint" to be set to "alpha_decisions".',
-							(string) $name
+						esc_html(
+							sprintf(
+								'Decision question "%s" uses the "box" type, which requires "openrouter.decision_endpoint" to be set to "alpha_decisions".',
+								(string) $name
+							)
 						)
 					);
 				}
@@ -199,11 +200,11 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 
 		$question_count = count( $questions );
 		if ( 0 === $question_count || $question_count > self::MAX_QUESTIONS ) {
-			// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			throw new InvalidArgumentException(
-				sprintf( 'A decision request needs between 1 and %1$d questions, %2$d given.', self::MAX_QUESTIONS, $question_count )
+				esc_html(
+					sprintf( 'A decision request needs between 1 and %1$d questions, %2$d given.', self::MAX_QUESTIONS, $question_count )
+				)
 			);
-			// phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		$questions_data = [];
@@ -213,11 +214,11 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 			}
 
 			if ( ! $question instanceof DecisionQuestion ) {
-				// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 				throw new InvalidArgumentException(
-					sprintf( 'The decision question "%s" must be a DecisionQuestion instance.', $name )
+					esc_html(
+						sprintf( 'The decision question "%s" must be a DecisionQuestion instance.', $name )
+					)
 				);
-				// phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			}
 
 			$questions_data[ $name ] = $question->toArray();
@@ -238,14 +239,14 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 			}
 
 			if ( isset( $params[ $key ] ) ) {
-				// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 				throw new InvalidArgumentException(
-					sprintf(
-						'The custom option "%s" conflicts with an existing parameter.',
-						$key
+					esc_html(
+						sprintf(
+							'The custom option "%s" conflicts with an existing parameter.',
+							$key
+						)
 					)
 				);
-				// phpcs:enable WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			}
 
 			$params[ $key ] = $value;
@@ -310,8 +311,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 			$message = ( is_array( $data['error'] ) && isset( $data['error']['message'] ) )
 				? (string) $data['error']['message']
 				: 'Unknown OpenRouter error.';
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message, not output.
-			throw new ResponseException( $message );
+			throw new ResponseException( esc_html( $message ) );
 		}
 	}
 
@@ -330,15 +330,13 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 		$response_data = $response->getData();
 
 		if ( ! isset( $response_data['answers'] ) || ! is_array( $response_data['answers'] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw ResponseException::fromMissingData( $this->providerMetadata()->getName(), 'answers' );
+			throw ResponseException::fromMissingData( esc_html( $this->providerMetadata()->getName() ), 'answers' );
 		}
 
 		$answers = [];
 		foreach ( $questions as $name => $question ) {
 			if ( ! array_key_exists( $name, $response_data['answers'] ) ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-				throw ResponseException::fromMissingData( $this->providerMetadata()->getName(), 'answers.' . $name );
+				throw ResponseException::fromMissingData( esc_html( $this->providerMetadata()->getName() ), esc_html( 'answers.' . $name ) );
 			}
 
 			$answers[ $name ] = DecisionAnswer::fromResponseData(

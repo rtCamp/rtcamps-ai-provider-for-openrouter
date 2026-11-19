@@ -133,11 +133,12 @@ class OpenRouterTextToSpeechConversionModel extends AbstractApiBasedModel implem
 		$custom_options = $config->getCustomOptions();
 		foreach ( $custom_options as $key => $value ) {
 			if ( isset( $params[ $key ] ) ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message, not output.
 				throw new InvalidArgumentException(
-					sprintf(
-						'The custom option "%s" conflicts with an existing parameter.',
-						$key
+					esc_html(
+						sprintf(
+							'The custom option "%s" conflicts with an existing parameter.',
+							$key
+						)
 					)
 				);
 			}
@@ -232,11 +233,12 @@ class OpenRouterTextToSpeechConversionModel extends AbstractApiBasedModel implem
 		}
 
 		if ( ! isset( self::MIME_TYPE_TO_RESPONSE_FORMAT[ $mime_type ] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message, not output.
 			throw new InvalidArgumentException(
-				sprintf(
-					'The output MIME type "%s" is not supported for text to speech.',
-					$mime_type
+				esc_html(
+					sprintf(
+						'The output MIME type "%s" is not supported for text to speech.',
+						$mime_type
+					)
 				)
 			);
 		}
@@ -261,7 +263,7 @@ class OpenRouterTextToSpeechConversionModel extends AbstractApiBasedModel implem
 		$body = $response->getBody();
 		if ( null === $body || '' === $body ) {
 			throw ResponseException::fromMissingData(
-				$this->providerMetadata()->getName(),
+				esc_html( $this->providerMetadata()->getName() ),
 				'body'
 			);
 		}

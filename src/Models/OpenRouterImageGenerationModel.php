@@ -145,8 +145,7 @@ class OpenRouterImageGenerationModel extends AbstractApiBasedModel implements Im
 		$custom_options = $config->getCustomOptions();
 		foreach ( $custom_options as $key => $value ) {
 			if ( isset( $params[ $key ] ) ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
-				throw new InvalidArgumentException( sprintf( 'The custom option "%s" conflicts with an existing parameter.', $key ) );
+				throw new InvalidArgumentException( esc_html( sprintf( 'The custom option "%s" conflicts with an existing parameter.', $key ) ) );
 			}
 			$params[ $key ] = $value;
 		}
@@ -233,8 +232,7 @@ class OpenRouterImageGenerationModel extends AbstractApiBasedModel implements Im
 		}
 
 		if ( [] === $candidates ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
-			throw ResponseException::fromMissingData( $provider_name, 'choices.message.images|data' );
+			throw ResponseException::fromMissingData( esc_html( $provider_name ), 'choices.message.images|data' );
 		}
 
 		$id = isset( $response_data['id'] ) && is_string( $response_data['id'] ) ? $response_data['id'] : '';
@@ -292,9 +290,8 @@ class OpenRouterImageGenerationModel extends AbstractApiBasedModel implements Im
 
 				$url = $image_data['image_url']['url'] ?? null;
 				if ( ! is_string( $url ) || '' === trim( $url ) ) {
-					// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
 					throw ResponseException::fromInvalidData(
-						$provider_name, // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
+						esc_html( $provider_name ),
 						sprintf( 'choices[%d].message.images[%d].image_url.url', (int) $choice_index, (int) $image_index ),
 						'The value must be a non-empty string.'
 					);
@@ -333,9 +330,8 @@ class OpenRouterImageGenerationModel extends AbstractApiBasedModel implements Im
 			} elseif ( isset( $choice_data['b64_json'] ) && is_string( $choice_data['b64_json'] ) ) {
 				$image_file = new File( $choice_data['b64_json'], $expected_mime_type );
 			} else {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
 				throw ResponseException::fromInvalidData(
-					$provider_name, // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
+					esc_html( $provider_name ),
 					sprintf( 'data[%d]', (int) $index ),
 					'The value must contain either a url or b64_json key with a string value.'
 				);
@@ -372,8 +368,7 @@ class OpenRouterImageGenerationModel extends AbstractApiBasedModel implements Im
 				case '4:7':
 					return '1024x1792';
 				default:
-					// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message only.
-					throw new InvalidArgumentException( sprintf( 'The aspect ratio "%s" is not supported.', $aspect_ratio ) );
+					throw new InvalidArgumentException( esc_html( sprintf( 'The aspect ratio "%s" is not supported.', $aspect_ratio ) ) );
 			}
 		}
 

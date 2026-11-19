@@ -109,8 +109,7 @@ class DecisionAnswer {
 	 */
 	public static function fromResponseData( DecisionTypeEnum $type, $data, string $path ): self {
 		if ( ! is_array( $data ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw ResponseException::fromInvalidData( 'OpenRouter', $path, 'The value must be an object.' );
+			throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path ), 'The value must be an object.' );
 		}
 
 		if ( $type->isNoul() ) {
@@ -131,8 +130,7 @@ class DecisionAnswer {
 			}
 
 			if ( null === $boxes ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-				throw ResponseException::fromInvalidData( 'OpenRouter', $path . '.box', 'The value must be an array.' );
+				throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path . '.box' ), 'The value must be an array.' );
 			}
 
 			return new self( $type, $boxes, [], $confidence );
@@ -143,16 +141,14 @@ class DecisionAnswer {
 
 		if ( $type->isChoice() ) {
 			if ( ! isset( $data['choice'] ) || ! is_string( $data['choice'] ) ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-				throw ResponseException::fromInvalidData( 'OpenRouter', $path . '.choice', 'The value must be a string.' );
+				throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path . '.choice' ), 'The value must be a string.' );
 			}
 
 			return new self( $type, $data['choice'], $probabilities, $confidence );
 		}
 
 		if ( ! isset( $data['score'] ) || ! is_numeric( $data['score'] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw ResponseException::fromInvalidData( 'OpenRouter', $path . '.score', 'The value must be a number.' );
+			throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path . '.score' ), 'The value must be a number.' );
 		}
 
 		$legend = [];
@@ -326,8 +322,7 @@ class DecisionAnswer {
 	 */
 	private static function readProbability( array $data, string $key, string $path ): float {
 		if ( ! isset( $data[ $key ] ) || ! is_numeric( $data[ $key ] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw ResponseException::fromInvalidData( 'OpenRouter', $path . '.' . $key, 'The value must be a number.' );
+			throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path . '.' . $key ), 'The value must be a number.' );
 		}
 
 		return (float) $data[ $key ];
@@ -345,17 +340,15 @@ class DecisionAnswer {
 	 */
 	private static function readProbabilities( array $data, string $path ): array {
 		if ( ! isset( $data['probabilities'] ) || ! is_array( $data['probabilities'] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
-			throw ResponseException::fromInvalidData( 'OpenRouter', $path . '.probabilities', 'The value must be an object.' );
+			throw ResponseException::fromInvalidData( 'OpenRouter', esc_html( $path . '.probabilities' ), 'The value must be an object.' );
 		}
 
 		$probabilities = [];
 		foreach ( $data['probabilities'] as $key => $probability ) {
 			if ( ! is_numeric( $probability ) ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 				throw ResponseException::fromInvalidData(
 					'OpenRouter',
-					$path . '.probabilities.' . $key,
+					esc_html( $path . '.probabilities.' . $key ),
 					'The value must be a number.'
 				);
 			}

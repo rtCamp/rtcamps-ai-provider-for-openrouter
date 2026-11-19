@@ -108,9 +108,10 @@ class DecisionResult {
 	 */
 	public function getAnswer( string $name ): DecisionAnswer {
 		if ( ! isset( $this->answers[ $name ] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			throw new InvalidArgumentException(
-				sprintf( 'No decision answer found for "%s".', $name )
+				esc_html(
+					sprintf( 'No decision answer found for "%s".', $name )
+				)
 			);
 		}
 

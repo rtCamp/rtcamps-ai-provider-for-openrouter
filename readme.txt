@@ -1,6 +1,6 @@
 === rtCamp’s AI Provider for OpenRouter ===
 Contributors:      rtcamp, milindmore22, vishal4669, aishwarryapande, aviralmittal89
-Tags:              ai, openrouter, llm, connector, image-generation, text-to-speech, tts, decisions, decision-models
+Tags:              ai, openrouter, llm, text-to-speech, image-generation
 Requires at least: 7.0
 Requires PHP:      7.4
 Stable tag:        1.2.0
