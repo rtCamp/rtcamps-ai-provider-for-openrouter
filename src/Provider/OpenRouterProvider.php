@@ -173,8 +173,7 @@ class OpenRouterProvider extends AbstractApiProvider {
 			}
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Exception message, not output.
-		throw new RuntimeException( 'Unsupported model capabilities for OpenRouter model: ' . $model_metadata->getId() );
+		throw new RuntimeException( esc_html( 'Unsupported model capabilities for OpenRouter model: ' . $model_metadata->getId() ) );
 	}
 
 	/**
