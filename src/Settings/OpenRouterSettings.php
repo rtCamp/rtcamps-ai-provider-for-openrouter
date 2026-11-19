@@ -451,7 +451,7 @@ class OpenRouterSettings {
 	/**
 	 * Renders the decision model autocomplete field.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 */
 	public function render_decision_model_field(): void {
 		$settings               = self::get_settings();
@@ -791,7 +791,7 @@ class OpenRouterSettings {
 	/**
 	 * REST API endpoint to retrieve available decision models.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return \WP_REST_Response The REST response.
 	 */
@@ -810,7 +810,7 @@ class OpenRouterSettings {
 	/**
 	 * Fetches and caches available decision models from OpenRouter.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<int, array<string, mixed>>|\WP_Error List of model entries or WP_Error on failure.
 	 */
@@ -870,7 +870,7 @@ class OpenRouterSettings {
 	/**
 	 * Returns sorted decision model IDs from OpenRouter.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return list<string> The decision model IDs, sorted.
 	 */
@@ -947,7 +947,7 @@ class OpenRouterSettings {
 	/**
 	 * Returns the currently selected decision model from settings.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return string The decision model identifier, or empty string if none.
 	 */

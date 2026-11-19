@@ -4,7 +4,7 @@
  *
  * @package rtcamp/rtcamps-ai-provider-for-openrouter
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 
 declare( strict_types=1 );
@@ -33,7 +33,7 @@ use WordPress\AiClient\Results\DTO\TokenUsage;
  * /api/v1/systemone (default) or /api/alpha/decisions endpoint, returning
  * calibrated probabilities and structured answers instead of generated text.
  *
- * @since 1.3.0
+ * @since 1.2.0
  *
  * @phpstan-type UsageData array{
  *     prompt_tokens?: int,
@@ -55,7 +55,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Endpoint identifier for OpenRouter's System One API (/api/v1/systemone).
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var string
 	 */
@@ -64,7 +64,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Endpoint identifier for OpenRouter's Alpha Decisions API (/api/alpha/decisions).
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var string
 	 */
@@ -73,7 +73,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Custom option key used to select the decision API endpoint.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var string
 	 */
@@ -82,7 +82,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * The maximum number of questions in one request.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var int
 	 */
@@ -91,7 +91,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Custom options consumed locally rather than sent in the JSON payload.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var list<string>
 	 */
@@ -104,7 +104,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Answers typed questions about the given state.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string|array<mixed>                                                      $state     The content to judge: a non-empty string or an array sent as JSON.
 	 * @param array<string, \rtCamp\AIProviderForOpenRouter\Decisions\DecisionQuestion> $questions Between 1 and 64 questions, keyed by the name their answers are returned under.
@@ -149,7 +149,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Resolves and validates the target decision endpoint from custom options.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param array<string, mixed> $questions The questions to validate against endpoint capabilities.
 	 * @return string One of ENDPOINT_SYSTEM_ONE or ENDPOINT_ALPHA_DECISIONS.
@@ -185,7 +185,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Prepares the state, questions, and model configuration into API request parameters.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param mixed        $state     The content to judge.
 	 * @param array<mixed> $questions The questions, keyed by name.
@@ -254,7 +254,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 		/**
 		 * Filters the OpenRouter decision request parameters.
 		 *
-		 * @since 1.3.0
+		 * @since 1.2.0
 		 *
 		 * @param array<string, mixed> $params Request parameters.
 		 */
@@ -265,7 +265,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Builds request options, honouring optional transport timeout custom options.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return \WordPress\AiClient\Providers\Http\DTO\RequestOptions The request options.
 	 */
@@ -297,7 +297,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Validates the HTTP response and checks for OpenRouter's error envelope.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param \WordPress\AiClient\Providers\Http\DTO\Response $response The HTTP response to check.
 	 * @throws \WordPress\AiClient\Providers\Http\Exception\ResponseException On error.
@@ -318,7 +318,7 @@ class OpenRouterDecisionModel extends AbstractApiBasedModel {
 	/**
 	 * Parses an OpenRouter decision response into a DecisionResult.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param \WordPress\AiClient\Providers\Http\DTO\Response                          $response  The OpenRouter API response.
 	 * @param array<string, \rtCamp\AIProviderForOpenRouter\Decisions\DecisionQuestion> $questions The questions asked.

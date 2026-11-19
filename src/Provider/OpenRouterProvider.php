@@ -53,7 +53,7 @@ class OpenRouterProvider extends AbstractApiProvider {
 	 * The AI Client has no decision capability, so decision models cannot be
 	 * resolved through the registry the way other models are.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string|null                                             $model_id     Optional. The model ID, such as "typesafe/jev-1.13". Defaults to the configured Decision Model setting.
 	 * @param \WordPress\AiClient\Providers\Models\DTO\ModelConfig|null $model_config Optional. Model configuration, for custom options (e.g. openrouter.decision_endpoint). Default null.
@@ -95,7 +95,7 @@ class OpenRouterProvider extends AbstractApiProvider {
 	/**
 	 * Lists the OpenRouter model IDs that support decisions.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return list<string> The decision model IDs, sorted.
 	 */
@@ -106,7 +106,7 @@ class OpenRouterProvider extends AbstractApiProvider {
 	/**
 	 * Builds a URL under OpenRouter's /api/alpha namespace.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param string $path Optional path relative to /api/alpha (e.g. "/decisions").
 	 * @return string The complete URL.

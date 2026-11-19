@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: rtCamp’s AI Provider for OpenRouter 1.1.1\n"
+"Project-Id-Version: rtCamp’s AI Provider for OpenRouter 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rtcamps-ai-provider-for-openrouter\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-15T09:50:10+00:00\n"
+"POT-Creation-Date: 2026-11-19T08:51:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: rtcamps-ai-provider-for-openrouter\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: rtcamps-ai-provider-for-openrouter.php
-msgid "OpenRouter provider for the WordPress AI Client. Access hundreds of AI models (text and image generation) through a single API."
+msgid "OpenRouter provider for the WordPress AI Client. Access hundreds of AI models (text, image, speech generation, and decision making) through a single API."
 msgstr ""
 
 #. Author of the plugin
@@ -53,157 +53,243 @@ msgstr ""
 msgid "The OpenRouter Provider plugin requires the WordPress AI Client (php-ai-client) to be installed."
 msgstr ""
 
-#: src/Plugin.php:133
+#: src/Plugin.php:150
 msgid "Settings"
 msgstr ""
 
-#: src/Provider/OpenRouterProvider.php:103
-msgid "Text and image generation using various models."
+#: src/Provider/OpenRouterProvider.php:193
+msgid "Text, image, and speech generation using various models."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:77
+#: src/Settings/OpenRouterSettings.php:87
 msgid "Default Model"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:86
+#: src/Settings/OpenRouterSettings.php:96
 msgid "Image Generation Model"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:101
-#: src/Settings/OpenRouterSettings.php:102
+#: src/Settings/OpenRouterSettings.php:105
+msgid "Text to Speech Model"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:114
+#: src/Settings/OpenRouterSettings.php:431
+msgid "Default Voice"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:123
+msgid "Decision Model"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:138
+#: src/Settings/OpenRouterSettings.php:139
 msgid "OpenRouter Settings"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:148
+#: src/Settings/OpenRouterSettings.php:194
 msgid "OpenRouter Logo"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:152
+#: src/Settings/OpenRouterSettings.php:198
 msgid "Connect and configure default AI intelligence models seamlessly."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:163
+#: src/Settings/OpenRouterSettings.php:209
 msgid "API Key Configuration"
 msgstr ""
 
 #. translators: 1: opening anchor tag, 2: closing anchor tag
-#: src/Settings/OpenRouterSettings.php:168
+#: src/Settings/OpenRouterSettings.php:214
 msgid "OpenRouter requires an API key to process requests. Set up your credentials under %1$sSettings > Connectors%2$s."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:182
+#: src/Settings/OpenRouterSettings.php:228
 msgid "Explore Hundreds of Models"
 msgstr ""
 
 #. translators: 1: opening anchor tag, 2: closing anchor tag
-#: src/Settings/OpenRouterSettings.php:187
+#: src/Settings/OpenRouterSettings.php:233
 msgid "Compare pricing, speed, latency, and context windows dynamically at %1$sopenrouter.ai/models%2$s."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:238
+#: src/Settings/OpenRouterSettings.php:284
 msgid "Type 3+ letters to search models…"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:241
+#: src/Settings/OpenRouterSettings.php:287
 msgid "Search OpenRouter models"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:256
+#: src/Settings/OpenRouterSettings.php:302
 msgid "Model help description"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:258
+#: src/Settings/OpenRouterSettings.php:304
 msgid "Choose a default OpenRouter model override. Leave empty to use the model requested by AI Client."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:288
+#: src/Settings/OpenRouterSettings.php:334
 msgid "Type to search image models…"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:291
+#: src/Settings/OpenRouterSettings.php:337
 msgid "Search OpenRouter image generation models"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:306
+#: src/Settings/OpenRouterSettings.php:352
 msgid "Image model help description"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:308
+#: src/Settings/OpenRouterSettings.php:354
 msgid "Choose a dedicated image generation model. This autocomplete lists all OpenRouter models that support image output."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:318
+#: src/Settings/OpenRouterSettings.php:384
+msgid "Type to search speech models…"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:387
+msgid "Search OpenRouter text to speech models"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:402
+msgid "TTS model help description"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:404
+msgid "Choose a dedicated text-to-speech model. This autocomplete lists OpenRouter models that support speech output."
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:433
+#: src/Settings/OpenRouterSettings.php:557
+#: build/admin/settings.js:1
+msgid "Select a voice…"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:436
+msgid "TTS voice help description"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:438
+msgid "Choose the default voice preset for synthesized speech. Populated automatically based on the selected speech model."
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:445
 msgid "Suggestions show input price, output price (per 1M tokens), and context length. Be aware that pricing for some models is based on average text and image output, which isn't listed here. Please verify the exact pricing at openrouter.ai/models."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:366
+#: src/Settings/OpenRouterSettings.php:471
+msgid "Type to search decision models…"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:474
+msgid "Search OpenRouter decision models"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:489
+msgid "Decision model help description"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:491
+msgid "Choose a default decision model for structured questions. This autocomplete lists OpenRouter models that support decisions output."
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:546
 #: build/admin/settings.js:1
 msgid "Loading models…"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:367
+#: src/Settings/OpenRouterSettings.php:547
 msgid "No models found."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:368
+#: src/Settings/OpenRouterSettings.php:548
 #: build/admin/settings.js:1
 msgid "Could not load models."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:369
+#: src/Settings/OpenRouterSettings.php:549
 msgid "Type at least 3 characters to search."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:370
+#: src/Settings/OpenRouterSettings.php:550
 msgid " models available."
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:371
+#: src/Settings/OpenRouterSettings.php:551
 #: build/admin/settings.js:1
 msgid "Prompt:"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:372
+#: src/Settings/OpenRouterSettings.php:552
 #: build/admin/settings.js:1
 msgid "Completion:"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:373
+#: src/Settings/OpenRouterSettings.php:553
 #: build/admin/settings.js:1
 msgid "ctx"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:374
+#: src/Settings/OpenRouterSettings.php:554
 #: build/admin/settings.js:1
 msgid "/1M"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:375
+#: src/Settings/OpenRouterSettings.php:555
 #: build/admin/settings.js:1
 msgid "Free"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:376
+#: src/Settings/OpenRouterSettings.php:556
 #: build/admin/settings.js:1
 msgid "N/A"
 msgstr ""
 
+#: src/Settings/OpenRouterSettings.php:558
+msgid "Model Default"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:559
+#: build/admin/settings.js:1
+msgid "No preset voices declared"
+msgstr ""
+
 #. translators: %s: Error message.
-#: src/Settings/OpenRouterSettings.php:449
+#: src/Settings/OpenRouterSettings.php:652
 msgid "Could not fetch OpenRouter models. Error: %s"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:459
+#: src/Settings/OpenRouterSettings.php:662
 msgid "Unexpected response from OpenRouter models endpoint."
 msgstr ""
 
 #. translators: %s: Error message.
-#: src/Settings/OpenRouterSettings.php:505
+#: src/Settings/OpenRouterSettings.php:708
 msgid "Could not fetch OpenRouter image models. Error: %s"
 msgstr ""
 
-#: src/Settings/OpenRouterSettings.php:515
+#: src/Settings/OpenRouterSettings.php:718
 msgid "Unexpected response from OpenRouter image models endpoint."
+msgstr ""
+
+#. translators: %s: Error message.
+#: src/Settings/OpenRouterSettings.php:764
+msgid "Could not fetch OpenRouter text-to-speech models. Error: %s"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:774
+msgid "Unexpected response from OpenRouter speech models endpoint."
+msgstr ""
+
+#. translators: %s: Error message.
+#: src/Settings/OpenRouterSettings.php:840
+msgid "Could not fetch OpenRouter decision models. Error: %s"
+msgstr ""
+
+#: src/Settings/OpenRouterSettings.php:852
+msgid "Unexpected response from OpenRouter decision models endpoint."
 msgstr ""
 
 #: build/admin/settings.js:1
@@ -223,9 +309,17 @@ msgid "View on OpenRouter"
 msgstr ""
 
 #: build/admin/settings.js:1
+msgid "speech models available."
+msgstr ""
+
+#: build/admin/settings.js:1
 msgid "models available."
 msgstr ""
 
 #: build/admin/settings.js:1
 msgid "image models available."
+msgstr ""
+
+#: build/admin/settings.js:1
+msgid "decision models available."
 msgstr ""

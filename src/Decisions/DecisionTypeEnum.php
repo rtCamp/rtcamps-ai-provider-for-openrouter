@@ -4,7 +4,7 @@
  *
  * @package rtcamp/rtcamps-ai-provider-for-openrouter
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 
 declare( strict_types=1 );
@@ -16,7 +16,7 @@ use WordPress\AiClient\Common\AbstractEnum;
 /**
  * Enum for the question types a decision model answers.
  *
- * @since 1.3.0
+ * @since 1.2.0
  *
  * @method static self choice() Creates an instance for the CHOICE type.
  * @method static self noul() Creates an instance for the NOUL type.

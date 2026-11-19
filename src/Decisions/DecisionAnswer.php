@@ -4,7 +4,7 @@
  *
  * @package rtcamp/rtcamps-ai-provider-for-openrouter
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 
 declare( strict_types=1 );
@@ -24,14 +24,14 @@ use WordPress\AiClient\Providers\Http\Exception\ResponseException;
  *  - score:  getScore(), getProbabilities(), getConfidence(), getLegend().
  *  - box:    getBox(), getConfidence().
  *
- * @since 1.3.0
+ * @since 1.2.0
  */
 class DecisionAnswer {
 
 	/**
 	 * The question type.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 */
 	private DecisionTypeEnum $type;
@@ -39,7 +39,7 @@ class DecisionAnswer {
 	/**
 	 * The answer value: option key for choice, probability for noul, position for score, or bounding boxes for box.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var string|float|array<int|string, mixed>
 	 */
@@ -48,7 +48,7 @@ class DecisionAnswer {
 	/**
 	 * The probability of each option or level.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var array<string, float>
 	 */
@@ -57,7 +57,7 @@ class DecisionAnswer {
 	/**
 	 * How concentrated the distribution is, from 0 to 1, or null when not provided.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 */
 	private ?float $confidence;
@@ -65,7 +65,7 @@ class DecisionAnswer {
 	/**
 	 * The score level descriptions, keyed by level index.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @var array<string, string>
 	 */
@@ -74,7 +74,7 @@ class DecisionAnswer {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param \rtCamp\AIProviderForOpenRouter\Decisions\DecisionTypeEnum $type          The question type.
 	 * @param string|float|array<int|string, mixed>                      $value         The answer value.
@@ -99,7 +99,7 @@ class DecisionAnswer {
 	/**
 	 * Creates an answer from the API data for one question.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param \rtCamp\AIProviderForOpenRouter\Decisions\DecisionTypeEnum $type The type of the question asked.
 	 * @param mixed                                                      $data The answer data from the response.
@@ -172,7 +172,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the question type.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return \rtCamp\AIProviderForOpenRouter\Decisions\DecisionTypeEnum The question type.
 	 */
@@ -183,7 +183,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the raw answer value.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return string|float|array<int|string, mixed> Option key for choice, probability for noul, position for score, or boxes for box.
 	 */
@@ -194,7 +194,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the most probable option of a choice answer.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return string|null The option key, or null if this is not a choice answer.
 	 */
@@ -205,7 +205,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the probability that the statement of a noul answer is true.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return float|null The probability from 0 to 1, or null if this is not a noul answer.
 	 */
@@ -216,7 +216,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the probability-weighted position of a score answer.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return float|null The position from 0 to one less than the number of levels, or null if
 	 *                    this is not a score answer.
@@ -228,7 +228,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the bounding box data of a box answer.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<int|string, mixed> The bounding box coordinates/entries, or empty array if not a box answer.
 	 */
@@ -239,7 +239,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the probability of each option (choice) or level index (score).
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<string, float> The probabilities, empty for noul and box answers.
 	 */
@@ -250,7 +250,7 @@ class DecisionAnswer {
 	/**
 	 * Returns how concentrated the distribution is, from 0 to 1.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return float|null The confidence from 0 to 1, or null when not provided.
 	 */
@@ -261,7 +261,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the level descriptions of a score answer, keyed by level index.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<string, string> The legend, empty for other answers.
 	 */
@@ -272,7 +272,7 @@ class DecisionAnswer {
 	/**
 	 * Checks whether the answer is confident enough to act on.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param float $threshold The minimum confidence, from 0 to 1.
 	 * @return bool True if the answer meets the threshold.
@@ -288,7 +288,7 @@ class DecisionAnswer {
 	/**
 	 * Returns the answer as an associative array.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @return array<string, mixed> The answer data.
 	 */
@@ -316,7 +316,7 @@ class DecisionAnswer {
 	/**
 	 * Reads a required numeric probability field from the API response.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param array<mixed> $data The response data for the answer.
 	 * @param string       $key  The key to read.
@@ -336,7 +336,7 @@ class DecisionAnswer {
 	/**
 	 * Reads the probabilities map from the API response.
 	 *
-	 * @since 1.3.0
+	 * @since 1.2.0
 	 *
 	 * @param array<mixed> $data The response data for the answer.
 	 * @param string       $path The base path for error messages.
